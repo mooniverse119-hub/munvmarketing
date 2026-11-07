@@ -1,4 +1,4 @@
-export const brand = {name:'MUNV AI CLASS',host:'LUNA',shop:'MUNV HAUS',universe:'MOONIVERSE',emailEndpoint:'',ga4Id:''};
+export const brand = {name:'Moonket',nameKo:'문캣',host:'LUNA',shop:'MUNV HAUS',universe:'MOONIVERSE',emailEndpoint:'',ga4Id:''};
 export const groups=['전체','제작·디자인','홍보 콘텐츠','고객 응대·운영'];
 export type Category={id:string;title:string;en:string;group:string;desc:string;image:string;use:string;steps:string[];resource:string};
 export const categories:Category[]=[

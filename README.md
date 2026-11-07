@@ -1,4 +1,4 @@
-# MUNV AI CLASS
+# 문캣 Moonket
 
 1인 뷰티샵 원장님을 위한 AI 운영·마케팅 교육 랜딩페이지. React + TypeScript + Vite. 외부 배포는 하지 않았습니다.
 
@@ -27,7 +27,7 @@ node tools/package/bin/npm-cli.js run dev
 - `src/data.ts`: 브랜드, 13개 콘텐츠, 그룹, 자료집 제목, FAQ.
 - `src/images.ts`: 이미지 경로와 설명. 빈 경로는 사진 요구사항이 적힌 회색 상자로 표시됩니다.
 - `src/main.tsx`: 페이지 구성, 상세 슬라이드, 신청 폼.
-- `src/style.css`: 반응형 디자인.
+- `src/style.css`, `src/moonket.css`: 기본 스타일과 Moonket 블랙·화이트 반응형 디자인.
 - `src/services.ts`: 허용된 분석 정보와 이메일 서비스 연결 경계.
 
 자료집과 사진은 아직 준비되지 않았습니다. 현 상태는 이메일을 저장·발송하지 않는 데모입니다.
@@ -55,3 +55,4 @@ node tools/package/bin/npm-cli.js run dev
 ## 검증
 
 `npm run build`로 TypeScript와 배포 빌드를 검사합니다. `node verify.mjs`는 로컬 서버 실행 중 브라우저 흐름을 검증합니다. 브라우저 최초 설치는 `npx playwright install chromium`입니다.
+
