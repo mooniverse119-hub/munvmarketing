@@ -44,11 +44,11 @@ export function FolderHero({onOpen,onLead}:{onOpen:(c:Category)=>void;onLead:(lo
     <div className="archive-folder-heading" style={{opacity:reduced?1:clamp((progress-.28)/.10),transform:`translateY(calc(-50% + ${reduced?0:20*(1-clamp((progress-.28)/.10))}px))`}}><span>THE MOONKET FILES</span><h2 ref={statementRef}><span>시술 너머의 일들,</span><span>이 안에 담았습니다</span></h2><p>{open>.65?'파일을 눌러 활용법을 살펴보세요':'스크롤하면 폴더 속 가능성이 열립니다'}</p></div>
     <div className="folder-stage">
      {folders.map((f,i)=>{
-      const isActive=i===active,rank=i;const isExpanded=expanded===i;const allFiles=categories.filter(c=>c.group===f.name);const files=allFiles;const fileOpen=reduced?1:clamp((progress-.68-i*.035)/.17);
+      const isActive=i===active,rank=i;const isExpanded=expanded===i;const allFiles=categories.filter(c=>c.group===f.name);const files=allFiles.filter(c=>c.id!=='reference-tools'||c.status==='existing');const fileOpen=reduced?1:clamp((progress-.68-i*.035)/.17);
       const enter=reduced?1:clamp((progress-.38-i*.035)/.16);
       return <div key={f.name} className={'archive-folder'+(isActive?' is-active':'')+(isExpanded?' is-expanded':'')} onMouseLeave={()=>setExpanded(n=>n===i?null:n)} onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget as Node))setExpanded(n=>n===i?null:n)}} style={{'--folder-color':f.color,'--folder-ink':f.ink,'--rank':rank,'--folder-open':fileOpen,transform:`translate3d(0,${(1-enter)*850}px,0)`,zIndex:isExpanded?20:rank+1} as CSSProperties}>
        <div className="folder-back"/>
-       <button className={'folder-tab tab-'+i} onMouseEnter={()=>{if(matchMedia('(hover:hover)').matches){setExpanded(i);choose(i)}}} onFocus={()=>{if(matchMedia('(hover:hover)').matches)setExpanded(i)}} onClick={()=>{choose(i);setExpanded(n=>n===i?null:i)}} aria-expanded={isExpanded} aria-controls={'folder-files-'+i} disabled={!arrived} tabIndex={arrived?0:-1} aria-pressed={isActive} aria-label={f.name+' 폴더 열기'}><span>{f.name}</span><Plus size={15}/></button>
+       <button className={'folder-tab tab-'+i} onMouseEnter={()=>{if(matchMedia('(hover:hover)').matches){setExpanded(i);choose(i)}}} onMouseLeave={()=>setExpanded(n=>n===i?null:n)} onFocus={e=>{if(e.currentTarget.matches(':focus-visible'))setExpanded(i)}} onClick={()=>{choose(i);if(matchMedia('(hover:hover)').matches)setExpanded(i);else setExpanded(n=>n===i?null:i)}} aria-expanded={isExpanded} aria-controls={'folder-files-'+i} disabled={!arrived} tabIndex={arrived?0:-1} aria-pressed={isActive} aria-label={f.name+' 폴더 열기'}><span>{f.name}</span><Plus size={15}/></button>
        <div id={'folder-files-'+i} className="folder-files" style={{opacity:fileOpen,pointerEvents:fileOpen>.75?'auto':'none'}} aria-hidden={fileOpen<=.75}>
         {files.map((c,i)=><button key={c.id} className="archive-file" aria-hidden={!isExpanded&&i>0} tabIndex={fileOpen>.75&&(isExpanded||i===0)?0:-1} onClick={()=>{track('folder_file_click',{category_id:c.id});onOpen(c)}} style={{'--file-index':i,'--file-count':files.length,'--fan-slot':[0,-1,1,-2,2][i]??i} as CSSProperties}>
          <span className="file-topline"><span>MOONKET / {String(i+1).padStart(2,'0')}</span><ArrowUpRight size={15}/></span>
@@ -59,7 +59,7 @@ export function FolderHero({onOpen,onLead}:{onOpen:(c:Category)=>void;onLead:(lo
       </div>
      })}
     </div>
-    <nav className="folder-switcher" style={{opacity:arrived?1:0}} aria-label="폴더 카테고리">{folders.map((f,i)=><button key={f.name} tabIndex={arrived?0:-1} className={i===active?'active':''} onClick={()=>{choose(i);setExpanded(n=>n===i?null:i)}} aria-pressed={i===active}><i style={{background:f.color}}/>{f.name}<span>{categories.filter(c=>c.group===f.name).length}</span></button>)}</nav>
+    <nav className="folder-switcher" style={{opacity:arrived?1:0}} aria-label="폴더 카테고리">{folders.map((f,i)=><button key={f.name} tabIndex={arrived?0:-1} className={i===active?'active':''} onClick={()=>{choose(i);setExpanded(null)}} aria-pressed={i===active}><i style={{background:f.color}}/>{f.name}<span>{categories.filter(c=>c.group===f.name).length}</span></button>)}</nav>
    </div>
    <div className="archive-progress" aria-hidden="true"><span style={{transform:`scaleX(${progress})`}}/></div>
   </div>
