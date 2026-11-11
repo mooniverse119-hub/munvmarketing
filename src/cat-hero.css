@@ -13,3 +13,5 @@
 
 /* Oversized, two-line hero composition. */
 .cat-line{flex-direction:column;align-items:center;font-size:clamp(62px,8.5vw,156px);gap:.03em;line-height:1.1;letter-spacing:-.055em}.cat-letter-layer{padding-bottom:32px}.cat-introduction p{font-size:clamp(18px,2.1vw,31px)}.cat-introduction .cat-sign{font-size:16px}.cat-sign b{font-size:clamp(40px,5.2vw,76px)}.hero-cat{width:112px;height:80px;left:-56px;top:-40px}@media(max-width:700px){.cat-line{font-size:clamp(27px,8.1vw,53px);line-height:1.2;gap:.12em}.cat-introduction p{font-size:15px}.cat-introduction .cat-sign{font-size:12px}.cat-sign b{font-size:34px}.hero-cat{width:76px;height:55px;left:-38px;top:-27px}}@media(max-height:620px) and (min-width:701px){.cat-line{font-size:min(8.5vw,17svh)}}
+
+.cat-hero-bottom{justify-content:center;align-items:center;text-align:center}.cat-hero-bottom>div{justify-content:center;align-items:center;flex-direction:column-reverse;gap:7px;width:auto}.cat-hero-bottom button{font-size:10px;padding:3px 0;color:#888}
