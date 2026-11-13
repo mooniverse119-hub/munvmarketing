@@ -39,8 +39,8 @@ export function CatHero(){
   <div className="cat-letter-layer" ref={letters} aria-hidden="true"><div className="cat-line">{['아직도 혼자','일하고 계신가요?'].map((phrase,j)=><span className="cat-phrase" key={j}>{phrase.split('').map((c,i)=><span key={i} className={c===' '?'cat-space':'cat-letter'}>{c===' '?'\u00a0':c}</span>)}</span>)}</div></div>
   <h1 className="cat-sr-only">{text}</h1>
   <div className="hero-cat" ref={cat} aria-hidden="true"><svg viewBox="100 210 700 480"><image href={import.meta.env.BASE_URL+'brand/moonket-lockup-v2.png'} width="900" height="900"/></svg></div>
-  <div className="cat-hero-bottom"><div><button onClick={()=>finish.current()} hidden={cleared}>소개 바로 보기</button><a href="#explore">콘텐츠 둘러보기 ↓</a></div></div>
+  <div className="cat-hero-bottom"><div><button onClick={()=>finish.current()} hidden={cleared}>소개 바로 보기</button><a href="#explore">콘텐츠 둘러보기</a></div></div>
  </section>
- <div className="moonket-marquee" aria-label="semipermanent, AI marketing"><div className="marquee-track" aria-hidden="true">{[0,1].map(copy=><div className="marquee-sequence" key={copy}>{[0,1,2].map(i=><span className="marquee-pair" key={i}><span>semipermanent</span><Paw/><span>AI marketing</span><Paw/></span>)}</div>)}</div></div>
+ <div className="moonket-marquee" aria-label="AI-marketing, semi-permanent"><div className="marquee-track" aria-hidden="true">{[0,1].map(copy=><div className="marquee-sequence" key={copy}>{[0,1,2].map(i=><span className="marquee-pair" key={i}><span>AI-marketing</span><Paw/><span>semi-permanent</span><Paw/></span>)}</div>)}</div></div>
  </>;
 }
