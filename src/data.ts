@@ -1,4 +1,4 @@
-export const brand = {name:'Moonket',nameKo:'문캣',host:'LUNA',shop:'MUNV HAUS',universe:'MOONIVERSE',emailEndpoint:import.meta.env.VITE_LEAD_ENDPOINT||'https://script.google.com/macros/s/AKfycbxvw5Q2Pw0GHY0hGjlMnfX-z1iC2SUCGYZR5KkieFPwiULXM-zPX_2p8qhsN2rCnWvIug/exec',ga4Id:''};
+export const brand = {name:'Moonket',nameKo:'문캣',host:'LUNA',shop:'MUNV HAUS',universe:'MOONIVERSE',emailEndpoint:import.meta.env.VITE_LEAD_ENDPOINT||'https://script.google.com/macros/s/AKfycbxvw5Q2Pw0GHY0hGjlMnfX-z1iC2SUCGYZR5KkieFPwiULXM-zPX_2p8qhsN2rCnWvIug/exec',ga4Id:'G-MREJ124JGZ'};
 export const groups=['전체','사진·디자인','릴스·캐러셀','광고·블로그','레퍼런스 도구'];
 export type Category={id:string;title:string;en:string;group:string;desc:string;image:string;use:string;steps:string[];resource:string;status:'existing'|'upcoming'};
 export const categories:Category[]=[
