@@ -22,6 +22,10 @@ export function initAnalytics(){
   if(!document.querySelector('script[data-moonket-ga4]')){
     const script=document.createElement('script');
     script.async=true;script.dataset.moonketGa4='true';
+    if(new URLSearchParams(location.search).get('ga_debug')==='1'){
+      script.onload=()=>console.info('[Moonket GA4] Google tag loaded');
+      script.onerror=()=>console.warn('[Moonket GA4] Google tag blocked or unavailable');
+    }
     script.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(brand.ga4Id);
     document.head.appendChild(script);
   }
@@ -31,7 +35,7 @@ export function track(name:string,params:Record<string,Value>={}){
   const safe:Record<string,Value>=Object.fromEntries(Object.entries({...params,is_demo:!brand.emailEndpoint}).filter(([k])=>allowed.has(k)));
   const category=categories.find(c=>c.id===(safe.category_id||safe.resource_id));
   if(category){safe.content_name=category.title;safe.content_group=category.group;safe.content_status=category.status}
-  if(brand.ga4Id&&window.gtag)window.gtag('event',name,{...safe,send_to:brand.ga4Id});
+  if(brand.ga4Id&&window.gtag){window.gtag('event',name,{...safe,send_to:brand.ga4Id});if(new URLSearchParams(location.search).get('ga_debug')==='1')console.info('[Moonket GA4 event]',name,JSON.stringify(safe));}
   else if(import.meta.env.DEV)console.debug('[analytics demo]',name,safe);
 }
 // UTM is intentionally not persisted before an approved attribution/consent policy exists.
