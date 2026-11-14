@@ -26,7 +26,8 @@ export function initAnalytics(){
       script.onload=()=>console.info('[Moonket GA4] Google tag loaded');
       script.onerror=()=>console.warn('[Moonket GA4] Google tag blocked or unavailable');
     }
-    script.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(brand.ga4Id);
+    // Load the published container assigned to this GA4 web stream.
+    script.src='https://www.googletagmanager.com/gtm.js?id=GTM-N7F5358R';
     document.head.appendChild(script);
   }
 }
