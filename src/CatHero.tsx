@@ -41,6 +41,7 @@ export function CatHero(){
   <div className="hero-cat" ref={cat} aria-hidden="true"><svg viewBox="100 210 700 480"><image href={import.meta.env.BASE_URL+'brand/moonket-lockup-v2.png'} width="900" height="900"/></svg></div>
   <div className="cat-hero-bottom"><div><button onClick={()=>finish.current()} hidden={cleared}>소개 바로 보기</button><a href="#explore">콘텐츠 둘러보기</a></div></div>
  </section>
- <div className="moonket-marquee" aria-label="AI-marketing, semi-permanent"><div className="marquee-track" aria-hidden="true">{[0,1].map(copy=><div className="marquee-sequence" key={copy}>{[0,1,2].map(i=><span className="marquee-pair" key={i}><span>AI-marketing</span><Paw/><span>semi-permanent</span><Paw/></span>)}</div>)}</div></div>
+ <div className="moonket-marquee" aria-label="Ai marketing, semi-permanent"><div className="marquee-track" aria-hidden="true">{[0,1].map(copy=><div className="marquee-sequence" key={copy}>{[0,1,2].map(i=><span className="marquee-pair" key={i}><span>Ai marketing</span><Paw/><span>semi-permanent</span><Paw/></span>)}</div>)}</div></div>
  </>;
 }
+
